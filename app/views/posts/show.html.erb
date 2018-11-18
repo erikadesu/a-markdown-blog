@@ -1,2 +1,18 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h3><%= @post.title %> </h3>
+      <p><%= @post.content_raw %> </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <p>Posted at <%= @post.created_at.strftime("%m/%d/%Y at %I:%M%p") %></p>
+      <button type="button" class="btn btn-outline-primary">
+        <%= link_to 'Back to Posts', posts_path %></button>
+      <button type="button" class="btn btn-outline-primary">
+        <%= link_to 'Edit Post', edit_post_path %></button>
+      <button type="button" class="btn btn-outline-danger"><%= link_to 'Delete Article', post_path(@post), method: 'delete', data: { confirm: "Are you sure?" } %> </button>
+    </div>
+  </div>
+</div>

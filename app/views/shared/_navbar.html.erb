@@ -10,9 +10,8 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Explore", posts_path, class: "navbar--item navbar--link" %>
-      <%= link_to "My Posts", "#", class: "navbar--item navbar--link" %>
-      <%= link_to "Create Post", "#", class: "navbar--item navbar--link" %>
+      <%= link_to "My Posts", posts_path, class: "navbar--item navbar--link" %>
+      <%= link_to "Create Post", new_post_path, class: "navbar--item navbar--link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar--item">
