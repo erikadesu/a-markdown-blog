@@ -8,6 +8,7 @@ gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
 gem 'devise'
+gem 'redcarpet', '~> 3.4'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
