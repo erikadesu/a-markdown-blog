@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_post, except: i%[ index new create ]
+  before_action :set_post, except: %i[ index new create ]
+
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def show
@@ -18,6 +19,7 @@ class PostsController < ApplicationController
       redirect_to @post, notice: 'Post successfully created!'
     else
       render :new
+    end
   end
 
   def edit

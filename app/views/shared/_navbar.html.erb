@@ -10,7 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Explore", "#", class: "navbar--item navbar--link" %>
+      <%= link_to "Explore", posts_path, class: "navbar--item navbar--link" %>
       <%= link_to "My Posts", "#", class: "navbar--item navbar--link" %>
       <%= link_to "Create Post", "#", class: "navbar--item navbar--link" %>
 
