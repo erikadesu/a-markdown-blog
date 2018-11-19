@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
-      redirect_to @post, notice: 'Post successfully created!'
+      redirect_to @post, notice: 'Your post was created!🥳'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post successfully updated!'
+      redirect_to @post, notice: 'Your post was updated!😄'
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post successfully destroyed'
+    redirect_to posts_url, notice: 'Your post was annhilated 👻'
   end
 
   private
