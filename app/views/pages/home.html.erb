@@ -17,7 +17,11 @@
               <h3 class="post-title"><%= link_to post.title, post %></h3>
             </li>
             <li class="text-body">
-              <%= post.content_html.html_safe if post.content_html.present? %>
+              <% if post.content_html.present?  %>
+               <p> <%= post.content_html.html_safe %></p>
+              <% else %>
+                <p style="white-space: pre-wrap"><%= post.content_raw %></p>
+              <% end %>
             </li>
           </ul>
         </li>

@@ -1,12 +1,15 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ show show_raw edit update destroy ]
 
   def index
     @posts = policy_scope(Post).order(created_at: :desc)
   end
 
   def show
+  end
+
+  def show_raw
   end
 
   def new
@@ -30,7 +33,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Your post was updated!😄'
+      redirect_to @post, notice: 'Your post was updated!😄 Our gnomes are now working on its conversion.'
     else
       render :edit
     end

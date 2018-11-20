@@ -18,7 +18,7 @@
         <tr>
           <td><%= link_to post.title, post_path(post) %></td>
           <td><p><%= post.content_raw[0..30] %>...</p></td>
-          <td><%= post.created_at.strftime("%m/%d/%Y at %I:%M%p") %></td>
+          <td><%= post.created_at.strftime("%b-%d-%Y at %I:%M%p") %></td>
           <td><%= link_to 'View', post %></td>
             <% if policy(post).edit? %>
              <td><%= link_to 'Edit', edit_post_path(post) %></td>

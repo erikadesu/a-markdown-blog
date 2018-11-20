@@ -17,6 +17,10 @@ class PostPolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
+  def show_raw?
+    true
+  end
+
   private
 
   def user_is_owner_or_admin?
