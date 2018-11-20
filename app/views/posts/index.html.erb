@@ -22,7 +22,7 @@
             <td><%= link_to post.title, post_path(post) %></td>
             <td><p><%= post.content_raw[0..30] %>...</p></td>
             <td><%= post.created_at.strftime("%b-%d-%Y at %I:%M%p") %></td>
-            <td><%= post.content_html.present? ? "Converted" : "Raw"%></td>
+            <td><%= post.content_html.present? ? "Converted" : "Pending"%></td>
             <td><%= link_to 'View', post %></td>
               <% if policy(post).edit? %>
                <td><%= link_to 'Edit', edit_post_path(post) %></td>
