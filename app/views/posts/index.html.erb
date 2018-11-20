@@ -7,6 +7,7 @@
           <th>Title</th>
           <th>Content</th>
           <th>Created at</th>
+          <th>Status</th>
           <th class="text-center"><i class="far fa-eye"></i></th>
           <th class="text-center"><i class="far fa-edit"></i></th>
           <th class="text-center"><i class="far fa-trash-alt"></i></th>
@@ -14,11 +15,13 @@
       </thead>
 
       <tbody>
+
         <% @posts.each do |post| %>
         <tr>
           <td><%= link_to post.title, post_path(post) %></td>
           <td><p><%= post.content_raw[0..30] %>...</p></td>
           <td><%= post.created_at.strftime("%b-%d-%Y at %I:%M%p") %></td>
+          <td><%= post.content_html.present? ? "Converted" : "Raw"%></td>
           <td><%= link_to 'View', post %></td>
             <% if policy(post).edit? %>
              <td><%= link_to 'Edit', edit_post_path(post) %></td>

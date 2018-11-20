@@ -1,15 +1,12 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: :show
-  before_action :set_post, only: %i[ show show_raw edit update destroy ]
+  before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
     @posts = policy_scope(Post).order(created_at: :desc)
   end
 
   def show
-  end
-
-  def show_raw
   end
 
   def new
@@ -22,9 +19,9 @@ class PostsController < ApplicationController
     @post.user = current_user
     authorize @post
     if @post.save
-      redirect_to @post, notice: 'Your post was created!🥳'
+      redirect_to post_path(@post), notice: 'Your post was created!🥳'
     else
-      render :new
+      render :new, notice: 'Post must contain a body 🙃'
     end
   end
 
@@ -33,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Your post was updated!😄 Our gnomes are now working on its conversion.'
+      redirect_to @post, notice: 'Your post was updated!😄'
     else
       render :edit
     end

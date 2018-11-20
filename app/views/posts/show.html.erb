@@ -4,13 +4,15 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="post-show some-margin-top some-margin-bottom">
           <h3 class="some-margin-bottom"><%= @post.title %> </h3>
-          <p><%= @post.user.username %></p>
+          <p>By <%= @post.user.username if @post.user.username.present? %></p>
           <% if @post.content_html.present? %>
             <p>
               <%= @post.content_html.html_safe  %>
             <% else %>
-              Our gnomes are currently parsing this awesome post content. Please come back later or check the raw version
-              <%= link_to "<<here>>", post_raw_path(@post) %></p>
+             <p><%= @post.content_raw %></p>
+             <br>
+             <br>
+             <em>Notice: Our hardworking gnomes are currently parsing this awesome post content. Please come back soon </em>😅
             <% end %>
         </div>
       </div>
@@ -21,7 +23,7 @@
         <div class="action-buttons text-center some-margin-bottom">
         <button type="button" class="btn btn-outline-primary">
           <%= link_to 'Back to Posts', root_path %></button>
-        <% if current_user&.admin? %>
+        <% if current_user&.admin? || user_signed_in? %>
           <% if policy(@post).edit? %>
             <button type="button" class="btn btn-outline-primary">
             <%= link_to 'Edit Post', edit_post_path %></button>

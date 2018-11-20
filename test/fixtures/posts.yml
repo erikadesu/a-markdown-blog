@@ -1,0 +1,11 @@
+post_one:
+  title: "Post Title 1"
+  content_raw: "** this is a post with markdown"
+  content_html: "this is a post with html"
+post_two:
+  title: "Post Title 2"
+  content_raw: "## hello world! sup"
+post_three:
+  title: "Post Title 3"
+  content_raw: "** this is another post with markdown"
+  content_html: "this is another post with html"
