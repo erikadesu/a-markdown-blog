@@ -1,27 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h3><%= @post.title %> </h3>
-      <p style="white-space: pre-wrap;"><%= @post.content_raw %> </p>
+<div class="background-pattern">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="post-show some-margin-top some-margin-bottom">
+          <h3 class="some-margin-bottom"><%= @post.title %> </h3>
+          <p style="white-space: pre-wrap;"><%= @post.content_raw %> </p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <p>Posted at <%= @post.created_at.strftime("%m/%d/%Y at %I:%M%p") %></p>
-      <button type="button" class="btn btn-outline-primary">
-        <%= link_to 'Back to Posts', root_path %></button>
-      <% if current_user&.admin? %>
-        <% if policy(@post).edit? %>
-          <button type="button" class="btn btn-outline-primary">
-          <%= link_to 'Edit Post', edit_post_path %></button>
-        <% end %>
-        <% if policy(@post).destroy? %>
-          <button type="button" class="btn btn-outline-danger"><%= link_to 'Delete Article', post_path(@post), method: 'delete', data: { confirm: "Are you sure?" } %> </button>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <p class="some-margin-bottom text-center">Posted at <%= @post.created_at.strftime("%m/%d/%Y at %I:%M%p") %></p>
+        <div class="action-buttons text-center some-margin-bottom">
+        <button type="button" class="btn btn-outline-primary">
+          <%= link_to 'Back to Posts', root_path %></button>
+        <% if current_user&.admin? %>
+          <% if policy(@post).edit? %>
+            <button type="button" class="btn btn-outline-primary">
+            <%= link_to 'Edit Post', edit_post_path %></button>
           <% end %>
-      <% end %>
+          <% if policy(@post).destroy? %>
+            <button type="button" class="btn btn-outline-danger"><%= link_to 'Delete Article', post_path(@post), method: 'delete', data: { confirm: "Are you sure?" } %> </button>
+            </div>
+            <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-
-
