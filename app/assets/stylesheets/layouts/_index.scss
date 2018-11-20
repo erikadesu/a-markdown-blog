@@ -3,3 +3,33 @@
 // @import "dashboard";
 // @import "profile";
 // @import "map";
+
+a {
+  color: black;
+  opacity: 0.6;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: black;
+    line-spacing: 1px;
+    opacity: 1;
+    -webkit-mask-image: linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+    -webkit-mask-size: 200%;
+    animation: shine 2s infinite;
+}
+  }
+
+@-webkit-keyframes shine {
+  from {
+    -webkit-mask-position: 150%;
+  }
+
+  to {
+    -webkit-mask-position: -50%;
+  }
+}
+
+p {
+  color: black;
+  opacity: 0.5;
+}

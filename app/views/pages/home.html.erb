@@ -1,22 +1,43 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <h1>Blog Title</h1>
-      <p>tagline</p>
+<div id="home">
+  <header class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <h1 class="blog-title">The Best Blog There Ever Was</h1>
+        <p class="blog-description">An awesome markdown blog!</p>
+      </div>
+    </div>
+  </header>
+    <div id="posts">
+      <% @posts.each do |post| %>
+      <ul class="post-content">
+        <li class="content">
+          <ul class="post">
+            <li class="text-title">
+              <h3 class="post-title"><%= link_to post.title, post %></h3>
+            </li>
+            <li class="text-body">
+              <%= post.content_html.html_safe if post.content_html.present? %>
+            </li>
+          </ul>
+        </li>
+        <ul class="post-info post-control opacity-transition">
+          <li class="post-date">
+            <p><%= post.created_at.strftime("%B %m, %Y") %></p>
+          </li>
+          <li class="post-actions">
+            <% if current_user&.admin? || user_signed_in? %>
+              <% if policy(post).edit? %>
+                <%= link_to 'Edit', edit_post_path(post) %>
+              <% end %>
+              <% if policy(post).destroy? %>
+                <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?'} %>
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </ul>
+      <% end %>
     </div>
   </div>
-  <% @posts.each do |post| %>
-  <div class="row">
-    <div class="col-xs-12 col-md-6 col-md offset-3">
-      <%= link_to post.title, post %>
-      <%= strip_tags(post.content_html) if post.content_html.present? %>
-      <% if policy(post).edit? %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-      <% end %>
-      <% if policy(post).destroy? %>
-        <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?'} %>
-      <% end %>
-    </div>
-  </div>
-  <% end %>
 </div>

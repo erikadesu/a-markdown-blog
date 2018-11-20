@@ -1,1 +1,22 @@
 // Specific CSS for your home-page
+#home {
+  background-image: url('https://res.cloudinary.com/assortedpicnicants/image/upload/v1542695396/full-bloom.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.blog {
+  text-align: center;
+  margin: auto;
+  padding: 110px 0px;
+}
+
+.blog-title {
+  font-size: 45pt;
+  line-height: 100% !important;
+}
+
+.blog-description {
+  margin-top: 0px;
+  font-family: $headers-font;
+}
