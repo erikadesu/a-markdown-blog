@@ -1,38 +1,45 @@
 <div class="posts-dashboard some-margin-top some-margin-bottom">
 
   <div class="container">
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Content</th>
-          <th>Created at</th>
-          <th>Status</th>
-          <th class="text-center"><i class="far fa-eye"></i></th>
-          <th class="text-center"><i class="far fa-edit"></i></th>
-          <th class="text-center"><i class="far fa-trash-alt"></i></th>
-        </tr>
-      </thead>
+    <% if current_user.posts.present? %>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created at</th>
+            <th>Status</th>
+            <th class="text-center"><i class="far fa-eye"></i></th>
+            <th class="text-center"><i class="far fa-edit"></i></th>
+            <th class="text-center"><i class="far fa-trash-alt"></i></th>
+          </tr>
+        </thead>
 
-      <tbody>
+        <tbody>
 
-        <% @posts.each do |post| %>
-        <tr>
-          <td><%= link_to post.title, post_path(post) %></td>
-          <td><p><%= post.content_raw[0..30] %>...</p></td>
-          <td><%= post.created_at.strftime("%b-%d-%Y at %I:%M%p") %></td>
-          <td><%= post.content_html.present? ? "Converted" : "Raw"%></td>
-          <td><%= link_to 'View', post %></td>
-            <% if policy(post).edit? %>
-             <td><%= link_to 'Edit', edit_post_path(post) %></td>
-            <% end %>
-            <% if policy(post).destroy? %>
-              <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?'} %></td>
-            <% end %>
-        </tr>
-        <% end %>
+          <% @posts.each do |post| %>
+          <tr>
+            <td><%= link_to post.title, post_path(post) %></td>
+            <td><p><%= post.content_raw[0..30] %>...</p></td>
+            <td><%= post.created_at.strftime("%b-%d-%Y at %I:%M%p") %></td>
+            <td><%= post.content_html.present? ? "Converted" : "Raw"%></td>
+            <td><%= link_to 'View', post %></td>
+              <% if policy(post).edit? %>
+               <td><%= link_to 'Edit', edit_post_path(post) %></td>
+              <% end %>
+              <% if policy(post).destroy? %>
+                <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+              <% end %>
+          </tr>
+          <% end %>
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="text-center">
+        <h4 >Nothing to see here 🙈</h4>
+        <%= link_to "Create a new post 🤗! ", new_post_path %>
+      </div>
+    <% end %>
   </div>
 </div>
