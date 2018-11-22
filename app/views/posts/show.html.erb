@@ -6,8 +6,8 @@
           <h3 class="some-margin-bottom"><%= @post.title %> </h3>
           <p>By <%= @post.user.username if @post.user.username.present? %></p>
           <% if @post.content_html.present? %>
-            <p>
-              <%= @post.content_html.html_safe  %>
+
+            <p> <%= @post.content_html.html_safe  %> </p>
             <% else %>
              <p><%= @post.content_raw %></p>
              <br>
@@ -31,7 +31,7 @@
           <% if policy(@post).destroy? %>
             <button type="button" class="btn btn-outline-danger"><%= link_to 'Delete Article', post_path(@post), method: 'delete', data: { confirm: "Are you sure?" } %> </button>
             </div>
-            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>
