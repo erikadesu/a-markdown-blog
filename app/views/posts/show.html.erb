@@ -7,7 +7,7 @@
           <p>By <%= @post.user.username if @post.user.username.present? %></p>
           <% if @post.content_html.present? %>
 
-            <p> <%= @post.content_html.html_safe  %> </p>
+            <p> <%= @post.content_html.html_safe  %></p>
             <% else %>
              <p><%= @post.content_raw %></p>
              <br>
