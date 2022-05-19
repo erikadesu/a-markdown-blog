@@ -9,7 +9,7 @@ gem 'rails', '5.2.1'
 gem 'redis'
 gem 'devise'
 gem 'pundit'
-gem 'redcarpet', '~> 3.4'
+gem 'redcarpet', '~> 3.5'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
